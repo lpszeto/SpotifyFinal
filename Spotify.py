@@ -5,6 +5,9 @@ import librosa
 import music21
 from music21 import converter, corpus, instrument, midi, note, chord, pitch, features
 import tensorflow as tf
+from sklearn.decomposition import PCA
+from sklearn import preprocessing
+import os
 
 # components = []
 # file = converter.parse('./smallSet/ACDC.Highway_to_Hell_K.mid')
@@ -34,8 +37,10 @@ import tensorflow as tf
 
 
 # Gets the average note duration
-fileParsed = converter.parse('./smallSet/ACDC.Highway_to_Hell_K.mid')
-feature = features.jSymbolic.AverageNoteDurationFeature(fileParsed)
+smallSet = './smallSet/'
+for image in os.listdir(smallSet):
+    fileParsed = converter.parse(os.path.join(smallSet, image))
+    feature = features.jSymbolic.AverageNoteDurationFeature(fileParsed)
 f = feature.extract()
 print('Average Note Duration')
 print(f.vector)
@@ -45,6 +50,10 @@ feature = features.jSymbolic.InitialTempoFeature(fileParsed)
 f = feature.extract()
 print('Initial Tempo')
 print(f.vector)
+
+
+# pca = PCA()
+# pca.fit()
 
 
 
