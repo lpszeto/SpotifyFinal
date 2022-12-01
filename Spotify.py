@@ -4,6 +4,7 @@ import pandas as pd
 import matplotlib.pyplot as py
 import librosa 
 import music21
+import os
 from music21 import converter, corpus, instrument, midi, note, chord, pitch, features
 
 # components = []
@@ -31,24 +32,25 @@ from music21 import converter, corpus, instrument, midi, note, chord, pitch, fea
 
 # midiFile = openMidi('./smallSet/ACDC.Highway_to_Hell_K.mid', False)
 # list_instruments(midiFile)
+file = open('data.csv', 'w')
+writer = csv.writer(file)
 
+for song in os.listdir('./smallSet'):
+    # Gets the average note duration
+    fileParsed = converter.parse(os.path.join('./smallSet', song))
+    feature = features.jSymbolic.AverageNoteDurationFeature(fileParsed)
+    f1 = feature.extract()
+    print('Average Note Duration')
+    print(f1.vector)
 
-# Gets the average note duration
-fileParsed = converter.parse('./smallSet/ACDC.Highway_to_Hell_K.mid')
-feature = features.jSymbolic.AverageNoteDurationFeature(fileParsed)
-f1 = feature.extract()
-print('Average Note Duration')
-print(f1.vector)
+    ## Gets the Initial Tempo
+    feature = features.jSymbolic.InitialTempoFeature(fileParsed)
+    f2 = feature.extract()
+    print('Initial Tempo')
+    print(f2.vector)
 
-## Gets the Initial Tempo
-feature = features.jSymbolic.InitialTempoFeature(fileParsed)
-f2 = feature.extract()
-print('Initial Tempo')
-print(f2.vector)
-
-data = [f1.vector[0], f2.vector[0]]
-with open('data.csv','w') as file:
-    writer = csv.writer(file)
-    
+    data = [song, f1.vector[0], f2.vector[0]]
     writer.writerow(data)
+
+file.close()
 #PCA
