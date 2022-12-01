@@ -48,8 +48,10 @@ for song in os.listdir('./smallSet'):
     f2 = feature.extract()
     print('Initial Tempo')
     print(f2.vector)
+    songName = song.split('.mid')
+    songName = songName[0]
 
-    data = [song, f1.vector[0], f2.vector[0]]
+    data = [songName, f1.vector[0], f2.vector[0]]
     writer.writerow(data)
 
 file.close()
