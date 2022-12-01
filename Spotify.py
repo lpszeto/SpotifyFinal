@@ -1,3 +1,4 @@
+import csv
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as py
@@ -35,12 +36,19 @@ from music21 import converter, corpus, instrument, midi, note, chord, pitch, fea
 # Gets the average note duration
 fileParsed = converter.parse('./smallSet/ACDC.Highway_to_Hell_K.mid')
 feature = features.jSymbolic.AverageNoteDurationFeature(fileParsed)
-f = feature.extract()
+f1 = feature.extract()
 print('Average Note Duration')
-print(f.vector)
+print(f1.vector)
 
 ## Gets the Initial Tempo
 feature = features.jSymbolic.InitialTempoFeature(fileParsed)
-f = feature.extract()
+f2 = feature.extract()
 print('Initial Tempo')
-print(f.vector)
+print(f2.vector)
+
+data = [f1.vector[0], f2.vector[0]]
+with open('data.csv','w') as file:
+    writer = csv.writer(file)
+    
+    writer.writerow(data)
+#PCA
