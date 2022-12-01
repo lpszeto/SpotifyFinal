@@ -4,6 +4,7 @@ import matplotlib.pyplot as py
 import librosa 
 import music21
 from music21 import converter, corpus, instrument, midi, note, chord, pitch, features
+import tensorflow as tf
 
 # components = []
 # file = converter.parse('./smallSet/ACDC.Highway_to_Hell_K.mid')
@@ -44,3 +45,6 @@ feature = features.jSymbolic.InitialTempoFeature(fileParsed)
 f = feature.extract()
 print('Initial Tempo')
 print(f.vector)
+
+
+
