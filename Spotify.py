@@ -19,7 +19,7 @@ def openMidi(midi_path, remove_drums):
     return midi.translate.midiFileToStream(mf)
 
 
-midiFile = open_midi('./smallSet/ACDC.Highway_to_Hell_K.mid', True)
+midiFile = openMidi('./smallSet/ACDC.Highway_to_Hell_K.mid', True)
 components = []
 for element in file.recurse():
     components.append(element)
