@@ -14,32 +14,7 @@ from sklearn.preprocessing import StandardScaler
 from sklearn.pipeline import Pipeline
 from sklearn.decomposition import PCA
 
-# file = open('data.csv', 'w')
-# writer = csv.writer(file)
 
-# for song in os.listdir('./smallSet'):
-#     # Gets the average note duration
-#     fileParsed = converter.parse(os.path.join('./smallSet', song))
-#     feature = features.jSymbolic.AverageNoteDurationFeature(fileParsed)
-#     f1 = feature.extract()
-#     print('Average Note Duration')
-#     print(f1.vector)
-
-#     ## Gets the Initial Tempo
-#     feature = features.jSymbolic.InitialTempoFeature(fileParsed)
-#     f2 = feature.extract()
-#     print('Initial Tempo')
-#     print(f2.vector)
-#     songName = song.split('.mid')
-#     songName = songName[0]
-
-#     data = [songName, f1.vector[0], f2.vector[0]]
-#     writer.writerow(data)
-
-# file.close()
-
-
-## GETTING SPOTIFY SONG DATA FROM USER
 data = pd.read_csv("data.csv")
 
 #K-Means 
@@ -60,3 +35,5 @@ projection['cluster'] = data['cluster_label']
 
 fig = px.scatter(projection, x='x', y='y', color='cluster', hover_data=['x', 'y', 'title'])
 fig.show()
+
+## GETTING SPOTIFY SONG DATA FROM USER
