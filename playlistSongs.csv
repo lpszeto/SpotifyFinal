@@ -1,0 +1,29 @@
+valence,year,acousticness,artists,danceability,duration_ms,energy,explicit,id,instrumentalness,key,liveness,loudness,mode,name,popularity,release_date,speechiness,tempo
+0.373,2019,0.0589,['iann dior', 'PnB Rock'],0.713,181290,0.632,0,33BCQDhwZyiudb8Mud33tb,1.44e-06,1,0.105,-7.685,1,"romance361",57,2019,0.105,170.009
+0.0762,2021,0.241,['glaive'],0.575,143415,0.454,0,3jjRnMBYlygg5GzqtiMjgr,0,3,0.102,-6.359,1,"all dogs go to heaven - outro",47,2021,0.0283,81.991
+0.227,2022,0.66,['glaive'],0.501,153624,0.231,0,7lxfdfIocUHefodQ8JLyfk,0,3,0.282,-6.718,1,"i will follow you into the dark - Spotify Singles",52,2022,0.0437,154.556
+0.329,2022,0.0416,['glaive'],0.621,116505,0.838,0,5L1eW2bt7pDbjhNLKWKom2,0,9,0.347,-5.006,0,"icarus",58,2022,0.0909,103.103
+0.549,2022,0.0417,['glaive'],0.49,200118,0.548,0,7z21w7xNVQyAnTtoQhhlBk,0,4,0.184,-5.102,0,"three wheels and it still drives!",61,2022,0.131,145.184
+0.926,2022,0.707,['Sleepy Hallow'],0.742,182507,0.498,0,1pnwc4c5qjgxr2tVdSU4C5,0,7,0.109,-6.121,0,"Marie",74,2022,0.0498,99.95
+0.329,2017,0.0172,['XXXTENTACION', 'Trippie Redd'],0.797,146520,0.533,0,7AQim7LbvFVZJE3O8TYgf2,0.000152,0,0.103,-9.74,0,"Fuck Love (feat. Trippie Redd)",82,2017,0.0412,131.036
+0.874,2019,0.763,['Trippie Redd'],0.85,158532,0.516,0,2ktxr00GpTtbMNeBjNeY8D,0,0,0.0896,-7.664,0,"Who Needs Love",69,2019,0.0714,108.963
+0.247,2019,0.22,['Trippie Redd'],0.638,143713,0.539,0,2NSWi83peog6gHerzlMCqU,0,10,0.241,-5.853,1,"Love Me More",49,2019,0.0504,83.381
+0.406,2013,0.338,['J. Cole', 'Miguel'],0.63,240280,0.608,0,1EbWiEra7ovNsMq3DeLSDy,0.000288,1,0.665,-7.273,1,"Power Trip (feat. Miguel)",0,2013,0.225,99.948
+0.299,2011,0.0267,['Drake', 'Rihanna'],0.629,277387,0.515,0,124NFj84ppZ5pAxTuVQYCQ,1.22e-05,0,0.0888,-10.358,0,"Take Care",75,2011,0.265,121.845
+0.443,2015,0.0664,['BØRNS'],0.743,274320,0.685,0,1Dr5JexwA15wmKe7Y7maA9,6.75e-05,4,0.0884,-6.863,1,"Past Lives",63,2015,0.0975,109.988
+0.177,2020,0.337,['Juice WRLD', 'Halsey'],0.63,202193,0.446,0,5wWAwzGp2OaaoIkwcz6wZs,0,1,0.166,-8.9,1,"Life's A Mess (feat. Halsey)",72,2020,0.0351,143.078
+0.388,2022,0.0182,['Kanye West', 'XXXTENTACION'],0.712,148571,0.861,0,06JvOZ39sK8D8SqiqfaxDU,6.09e-06,5,0.511,-5.487,0,"True Love",80,2022,0.25,84.042
+0.696,2017,0.617,['Lil Uzi Vert', 'Oh Wonder'],0.703,221747,0.757,0,2eAZfqOm4EnOF9VvN50Tyc,0,1,0.106,-3.612,1,"The Way Life Goes (feat. Oh Wonder)",80,2017,0.05,82.008
+0.775,2022,0.207,['Bankrol Hayden'],0.84,138213,0.537,0,3FcsP46yuD5OhisPkp0jFT,1.32e-06,7,0.0956,-6.658,1,"Fuck Love",56,2022,0.0426,103.983
+0.746,2019,0.334,['XXXTENTACION', 'PnB Rock', 'Trippie Redd'],0.8,150475,0.526,0,03eJ2DclFWXYU8GWgANdmZ,0.00174,8,0.0571,-5.153,1,"bad vibes forever",75,2019,0.0716,129.874
+0.451,2022,0.0306,['Juice WRLD'],0.587,227527,0.614,0,1CfuBY3BDdKpooQ9L5zgUc,0,2,0.399,-6.344,1,"Cigarettes",77,2022,0.0435,160.075
+0.177,2018,0.032,['Juice WRLD'],0.642,170539,0.562,0,49QVOdWgGagzLrThkIqtK6,0,11,0.168,-4.869,0,"Scared Of Love",70,2018,0.0812,158.001
+0.463,2019,0.0758,['Juice WRLD'],0.746,248431,0.561,0,3T06rGO2dVEntMvym0vpQu,0,0,0.132,-4.869,1,"Empty",76,2019,0.0526,77.535
+0.163,2019,0.0131,['iann dior'],0.63,131213,0.63,0,5ls62WNKHUUrdF3r1cv83T,0,9,0.142,-6.211,1,"emotions",72,2019,0.0395,80.512
+0.522,2020,0.157,['The Kid LAROI', 'Juice WRLD'],0.487,181688,0.74,0,2rPHUAeUPbNgTmK18FPTiZ,0,6,0.612,-4.973,1,"GO (feat. Juice WRLD)",73,2020,0.0944,73.779
+0.591,2019,0.0558,['Juice WRLD'],0.757,214246,0.932,0,2xwwY0EN7dtnXzMU8xRDxX,0,3,0.097,-2.809,1,"Who Shot Cupid?",68,2019,0.0372,125.99
+0.323,2015,0.0967,['Lil Peep'],0.585,142000,0.471,0,30bqVoKjX479ab90a8Pafp,0.0184,4,0.115,-9.934,0,"Star Shopping",65,2015,0.0616,93.099
+0.235,2015,0.871,['Eden Project'],0.569,265456,0.316,0,5iJS04ZXjMkQZ5nS0PsIeY,0,11,0.115,-9.762,0,"Crazy in Love",59,2015,0.0475,118.297
+0.172,2022,0.417,['Metro Boomin', 'The Weeknd', '21 Savage'],0.715,221520,0.62,0,2dHHgzDwk4BJdRwy9uXhTO,0,1,0.0822,-6.005,0,"Creepin' (with The Weeknd & 21 Savage)",67,2022,0.0484,97.95
+0.332,2022,0.194,['Juice WRLD', 'SUGA', 'BTS'],0.603,226149,0.771,0,59bY27SZQ4r25o02vqOhgC,0,9,0.13,-6.336,1,"Girl Of My Dreams (with SUGA of BTS)",72,2022,0.0627,139.988
+0.393,2018,0.44,['Metro Boomin', 'Swae Lee', 'Wizkid'],0.52,230240,0.594,0,0NA5xAtDra50d0Lfs2uvoh,0,11,0.185,-8.81,0,"Borrowed Love (feat. Swae Lee & WizKid)",62,2018,0.462,129.216

@@ -34,3 +34,5 @@ for i in range(totalSongs):
     print(f"{trackName}, {artistName}, {songID}, {uri}")
     
     print(sp.audio_features(songID)[0])
+
+playlistSongsFile.close()
