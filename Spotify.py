@@ -14,26 +14,29 @@ from sklearn.preprocessing import StandardScaler
 from sklearn.pipeline import Pipeline
 from sklearn.decomposition import PCA
 
-data = pd.read_csv("data.csv")
+# data = pd.read_csv("data.csv")
 
-#K-Means 
-cluster_pipline = Pipeline([('scaler', StandardScaler()), ('kmeans', KMeans(n_clusters=20, verbose=False))], verbose=False)
-X = data.select_dtypes(np.number)
-num_col = list(X.columns)
-cluster_pipline.fit(X)
-cluster_labels = cluster_pipline.predict(X)
-data['cluster_label'] = cluster_labels
+# #K-Means 
+# cluster_pipline = Pipeline([('scaler', StandardScaler()), ('kmeans', KMeans(n_clusters=20, verbose=False))], verbose=False)
+# X = data.select_dtypes(np.number)
+# num_col = list(X.columns)
+# cluster_pipline.fit(X)
+# cluster_labels = cluster_pipline.predict(X)
+# data['cluster_label'] = cluster_labels
 
-#Visualizing Cluster PCA 
-pca_pipeline = Pipeline([('scaler', StandardScaler()), ('PCA', PCA(n_components=2))])
-song_embedding = pca_pipeline.fit_transform(X)
-projection = pd.DataFrame(columns=['x', 'y'], data=song_embedding)
-projection['title'] = data['name']
-projection['cluster'] = data['cluster_label']
+# #Visualizing Cluster PCA 
+# pca_pipeline = Pipeline([('scaler', StandardScaler()), ('PCA', PCA(n_components=2))])
+# song_embedding = pca_pipeline.fit_transform(X)
+# projection = pd.DataFrame(columns=['x', 'y'], data=song_embedding)
+# projection['title'] = data['name']
+# projection['cluster'] = data['cluster_label']
 
 
-fig = px.scatter(projection, x='x', y='y', color='cluster', hover_data=['x', 'y', 'title'])
-fig.show()
+# fig = px.scatter(projection, x='x', y='y', color='cluster', hover_data=['x', 'y', 'title'])
+# fig.show()
+
+colOrder = ['valence', 'year', 'acousticness', 'danceability', 'duration_ms', 'energy', 'explicit',
+ 'instrumentalness', 'key', 'liveness', 'loudness', 'mode', 'popularity', 'speechiness', 'tempo']
 
 ## GETTING SPOTIFY SONG DATA FROM USER
 def loginToSpotify():
@@ -68,8 +71,7 @@ def getAudioFeatures(sp, songID):
 
 
 
-
-## SP is the api connection (spotify object)
+# SP is the api connection (spotify object)
 sp = loginToSpotify()
 playlistDict = searchPlaylist(sp)
 
@@ -95,19 +97,39 @@ for i in range(totalSongs):
     explicit = 1 if playlistDict['tracks']['items'][i]['track']['explicit'] == 'True' else 0
     popularity = playlistDict['tracks']['items'][i]['track']['popularity']
 
-    print(f"{trackName}, {artistName}, {songID}, {uri}")
-    valence, acousticness, danceability, durationMS, energy, id, instrumentalness, key, liveness, loudness, mode, speechiness, tempo = getAudioFeatures(sp, songID)
-    
-    playlistSongsFile.write(f'{valence},{releaseDate},{acousticness},{artists},{danceability},{durationMS},{energy},' \
-                            f'{explicit},{id},{instrumentalness},{key},{liveness},{loudness},{mode},"{trackName}",{popularity},{releaseDate},{speechiness},{tempo}\n')
+    ## IF THERE ARE MORE THAN ONE ARTISTS PUT THE LIST IN QUOTATIONS SO PANDAS CAN READ IT
+    if len(artists) > 1:
+        print(f"{trackName}, {artistName}, {songID}, {uri}")
+        valence, acousticness, danceability, durationMS, energy, id, instrumentalness, key, liveness, loudness, mode, speechiness, tempo = getAudioFeatures(sp, songID)
+        
+        playlistSongsFile.write(f'{valence},{releaseDate},{acousticness},"{artists}",{danceability},{durationMS},{energy},' \
+                                f'{explicit},{id},{instrumentalness},{key},{liveness},{loudness},{mode},"{trackName}",{popularity},{releaseDate},{speechiness},{tempo}\n')
+    else:
+        print(f"{trackName}, {artistName}, {songID}, {uri}")
+        valence, acousticness, danceability, durationMS, energy, id, instrumentalness, key, liveness, loudness, mode, speechiness, tempo = getAudioFeatures(sp, songID)
+        
+        playlistSongsFile.write(f'{valence},{releaseDate},{acousticness},{artists},{danceability},{durationMS},{energy},' \
+                                f'{explicit},{id},{instrumentalness},{key},{liveness},{loudness},{mode},"{trackName}",{popularity},{releaseDate},{speechiness},{tempo}\n')
 
 playlistSongsFile.close()
 
 
+### WORKING ON
+# songVectorData = []
 # data = pd.read_csv("playlistSongs.csv")
+# for i in range(data.shape[0]):
+#     songData = data.loc[i,:]
+#     songVector = songData[colOrder].values
+#     songVectorData.append(songVector)
+# songDataArray = np.array(list(songVectorData))
+# meanVector = np.mean(songDataArray, axis=0)
+# print(meanVector)
+# scaler = song_cluster_pipeline.steps[0][1]
+## WORKING ON
+
 
 # #K-Means 
-# cluster_pipline = Pipeline([('scaler', StandardScaler()), ('kmeans', KMeans(n_clusters=20, verbose=False))], verbose=False)
+# cluster_pipline = Pipeline([('scaler', StandardScaler()), ('kmeans', KMeans(n_clusters=4, verbose=False))], verbose=False)
 # X = data.select_dtypes(np.number)
 # num_col = list(X.columns)
 # cluster_pipline.fit(X)
@@ -119,8 +141,10 @@ playlistSongsFile.close()
 # song_embedding = pca_pipeline.fit_transform(X)
 # projection = pd.DataFrame(columns=['x', 'y'], data=song_embedding)
 # projection['title'] = data['name']
+# projection['artists'] = data['artists']
 # projection['cluster'] = data['cluster_label']
 
 
-# fig = px.scatter(projection, x='x', y='y', color='cluster', hover_data=['x', 'y', 'title'])
+# fig = px.scatter(projection, x='x', y='y', color='cluster', hover_data=['x', 'y', 'title', 'artists'])
 # fig.show()
+
