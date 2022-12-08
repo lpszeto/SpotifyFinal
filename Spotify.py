@@ -29,10 +29,11 @@ from sklearn.decomposition import PCA
 # song_embedding = pca_pipeline.fit_transform(X)
 # projection = pd.DataFrame(columns=['x', 'y'], data=song_embedding)
 # projection['title'] = data['name']
+# projection['artists'] = data['artists']
 # projection['cluster'] = data['cluster_label']
 
 
-# fig = px.scatter(projection, x='x', y='y', color='cluster', hover_data=['x', 'y', 'title'])
+# fig = px.scatter(projection, x='x', y='y', color='cluster', hover_data=['x', 'y', 'title', 'artists'])
 # fig.show()
 
 colOrder = ['valence', 'year', 'acousticness', 'danceability', 'duration_ms', 'energy', 'explicit',
