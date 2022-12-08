@@ -13,6 +13,7 @@ from sklearn.cluster import KMeans
 from sklearn.preprocessing import StandardScaler
 from sklearn.pipeline import Pipeline
 from sklearn.decomposition import PCA
+from kneed import KneeLocator
 
 # data = pd.read_csv("data.csv")
 
@@ -127,25 +128,34 @@ playlistSongsFile.close()
 # print(meanVector)
 # scaler = song_cluster_pipeline.steps[0][1]
 ## WORKING ON
+data = pd.read_csv("playlistSongs.csv", on_bad_lines='skip')
+X = data.select_dtypes(np.number)
+print(X)
+sse = []
+for k in range(1,20):
+    kmeans = KMeans(n_clusters=k).fit(X)
+    X["clusters"] = kmeans.labels_
+    print(X["clusters"])   
+    sse.append(kmeans.inertia_)
+kl = KneeLocator(range(1,20),sse, curve="convex", direction="decreasing")
+
+#K-Means 
+cluster_pipline = Pipeline([('scaler', StandardScaler()), ('kmeans', KMeans(n_clusters=kl.elbow, verbose=False))], verbose=False)
+X = data.select_dtypes(np.number)
+num_col = list(X.columns)
+cluster_pipline.fit(X)
+cluster_labels = cluster_pipline.predict(X)
+data['cluster_label'] = cluster_labels
+
+#Visualizing Cluster PCA 
+pca_pipeline = Pipeline([('scaler', StandardScaler()), ('PCA', PCA(n_components=2))])
+song_embedding = pca_pipeline.fit_transform(X)
+projection = pd.DataFrame(columns=['x', 'y'], data=song_embedding)
+projection['title'] = data['name']
+projection['artists'] = data['artists']
+projection['cluster'] = data['cluster_label']
 
 
-# #K-Means 
-# cluster_pipline = Pipeline([('scaler', StandardScaler()), ('kmeans', KMeans(n_clusters=4, verbose=False))], verbose=False)
-# X = data.select_dtypes(np.number)
-# num_col = list(X.columns)
-# cluster_pipline.fit(X)
-# cluster_labels = cluster_pipline.predict(X)
-# data['cluster_label'] = cluster_labels
-
-# #Visualizing Cluster PCA 
-# pca_pipeline = Pipeline([('scaler', StandardScaler()), ('PCA', PCA(n_components=2))])
-# song_embedding = pca_pipeline.fit_transform(X)
-# projection = pd.DataFrame(columns=['x', 'y'], data=song_embedding)
-# projection['title'] = data['name']
-# projection['artists'] = data['artists']
-# projection['cluster'] = data['cluster_label']
-
-
-# fig = px.scatter(projection, x='x', y='y', color='cluster', hover_data=['x', 'y', 'title', 'artists'])
-# fig.show()
+fig = px.scatter(projection, x='x', y='y', color='cluster', hover_data=['x', 'y', 'title', 'artists'])
+fig.show()
 
