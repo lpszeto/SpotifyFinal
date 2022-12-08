@@ -1,59 +1,145 @@
+import csv
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as py
+import plotly.express as px 
 import librosa 
 import music21
-from music21 import converter, corpus, instrument, midi, note, chord, pitch, features
-import tensorflow as tf
-from sklearn.decomposition import PCA
-from sklearn import preprocessing
+import spotipy
+from spotipy.oauth2 import SpotifyClientCredentials
 import os
+from music21 import converter, corpus, instrument, midi, note, chord, pitch, features
+from sklearn.cluster import KMeans
+from sklearn.preprocessing import StandardScaler
+from sklearn.pipeline import Pipeline
+from sklearn.decomposition import PCA
+from sklearn.metrics import euclidean_distances
+from scipy.spatial.distance import cdist
 
-# components = []
-# file = converter.parse('./smallSet/ACDC.Highway_to_Hell_K.mid')
-# for element in file.recurse():
-#     components.append(element)
-#     print(element)
+data = pd.read_csv("data.csv")
 
-# def openMidi(midi_path, remove_drums):
-#     mf = midi.MidiFile()
-#     mf.open(midi_path)
-#     mf.read()
-#     mf.close()
-#     if (remove_drums):
-#         for i in range(len(mf.tracks)):
-#             mf.tracks[i].events = [ev for ev in mf.tracks[i].events if ev.channel != 10]
-#     return midi.translate.midiFileToStream(mf)
+# #K-Means 
+cluster_pipeline = Pipeline([('scaler', StandardScaler()), ('kmeans', KMeans(n_clusters=20, verbose=False))], verbose=False)
+X = data.select_dtypes(np.number)
+num_col = list(X.columns)
+cluster_pipeline.fit(X)
+cluster_labels = cluster_pipeline.predict(X)
+data['cluster_label'] = cluster_labels
 
-# def list_instruments(midi):
-#     partStream = midiFile.parts.stream()
-#     print("List of instruments found")
-#     for p in partStream:
-#         aux = p
-#         print(p.partName)
-
-# midiFile = openMidi('./smallSet/ACDC.Highway_to_Hell_K.mid', False)
-# list_instruments(midiFile)
-
-
-# Gets the average note duration
-smallSet = './smallSet/'
-for image in os.listdir(smallSet):
-    fileParsed = converter.parse(os.path.join(smallSet, image))
-    feature = features.jSymbolic.AverageNoteDurationFeature(fileParsed)
-f = feature.extract()
-print('Average Note Duration')
-print(f.vector)
-
-## Gets the Initial Tempo
-feature = features.jSymbolic.InitialTempoFeature(fileParsed)
-f = feature.extract()
-print('Initial Tempo')
-print(f.vector)
+#Visualizing Cluster PCA 
+pca_pipeline = Pipeline([('scaler', StandardScaler()), ('PCA', PCA(n_components=2))])
+song_embedding = pca_pipeline.fit_transform(X)
+projection = pd.DataFrame(columns=['x', 'y'], data=song_embedding)
+projection['title'] = data['name']
+projection['artists'] = data['artists']
+projection['cluster'] = data['cluster_label']
 
 
-# pca = PCA()
-# pca.fit()
+fig = px.scatter(projection, x='x', y='y', color='cluster', hover_data=['x', 'y', 'title', 'artists'])
+fig.show()
+
+colOrder = ['valence', 'year', 'acousticness', 'danceability', 'duration_ms', 'energy', 'explicit',
+ 'instrumentalness', 'key', 'liveness', 'loudness', 'mode', 'popularity', 'speechiness', 'tempo']
+
+## GETTING SPOTIFY SONG DATA FROM USER
+def loginToSpotify():
+    with open(r"credentials.txt") as f:
+        [SPOTIPY_CLIENT_ID,SPOTIPY_CLIENT_SECRET] = f.read().split("\n")
+        f.close()
+    auth_manager = SpotifyClientCredentials(client_id=SPOTIPY_CLIENT_ID, client_secret=SPOTIPY_CLIENT_SECRET)
+    sp = spotipy.Spotify(auth_manager=auth_manager)
+    return sp
+def searchPlaylist(sp):
+    playlistLink = input("Please Enter Playlist URL\n")
+    playlistDict = sp.playlist(playlistLink)
+    return playlistDict
+
+def getAudioFeatures(sp, songID):
+    valence = sp.audio_features(songID)[0]['valence']
+    acousticness = sp.audio_features(songID)[0]['acousticness']
+    danceability = sp.audio_features(songID)[0]['danceability']
+    durationMS = sp.audio_features(songID)[0]['duration_ms']
+    energy = sp.audio_features(songID)[0]['energy']
+    id = sp.audio_features(songID)[0]['id']
+    instrumentalness = sp.audio_features(songID)[0]['instrumentalness']
+    key = sp.audio_features(songID)[0]['key']
+    liveness = sp.audio_features(songID)[0]['liveness']
+    loudness = sp.audio_features(songID)[0]['loudness']
+    mode = sp.audio_features(songID)[0]['mode']
+    speechiness = sp.audio_features(songID)[0]['speechiness']
+    tempo = sp.audio_features(songID)[0]['tempo']
+
+    return valence, acousticness, danceability, durationMS, energy, id, instrumentalness, key, liveness, loudness, mode, speechiness, tempo
 
 
+
+# SP is the api connection (spotify object)
+sp = loginToSpotify()
+playlistDict = searchPlaylist(sp)
+
+totalSongs = playlistDict['tracks']['total']
+song_list = []
+song_id = []
+artist_id = []
+
+playlistSongsFile = open('playlistSongs.csv', 'w')
+playlistSongsFile.write('valence,year,acousticness,artists,danceability,duration_ms,energy,explicit,id,instrumentalness,key,' \
+                                                    'liveness,loudness,mode,name,popularity,release_date,speechiness,tempo\n')
+
+for i in range(totalSongs):
+    ## GETS TRACK INFO AND SONG INFO
+    artists = [k["name"] for k in playlistDict['tracks']['items'][i]["track"]["artists"]]
+    trackName = playlistDict['tracks']['items'][i]['track']['name']
+    trackName = trackName.replace(',', "")
+    artistName = artists[0]
+    songID = playlistDict['tracks']['items'][i]['track']['id']
+    uri = playlistDict['tracks']['items'][i]['track']['uri']
+    releaseDate = playlistDict['tracks']['items'][i]['track']['album']['release_date']
+    releaseDate = releaseDate.split('-')[0]
+    explicit = 1 if playlistDict['tracks']['items'][i]['track']['explicit'] == 'True' else 0
+    popularity = playlistDict['tracks']['items'][i]['track']['popularity']
+
+    ## IF THERE ARE MORE THAN ONE ARTISTS PUT THE LIST IN QUOTATIONS SO PANDAS CAN READ IT
+    if len(artists) > 1:
+        print(f"{trackName}, {artistName}, {songID}, {uri}")
+        valence, acousticness, danceability, durationMS, energy, id, instrumentalness, key, liveness, loudness, mode, speechiness, tempo = getAudioFeatures(sp, songID)
+        
+        playlistSongsFile.write(f'{valence},{releaseDate},{acousticness},"{artists}",{danceability},{durationMS},{energy},' \
+                                f'{explicit},{id},{instrumentalness},{key},{liveness},{loudness},{mode},"{trackName}",{popularity},{releaseDate},{speechiness},{tempo}\n')
+    else:
+        print(f"{trackName}, {artistName}, {songID}, {uri}")
+        valence, acousticness, danceability, durationMS, energy, id, instrumentalness, key, liveness, loudness, mode, speechiness, tempo = getAudioFeatures(sp, songID)
+        
+        playlistSongsFile.write(f'{valence},{releaseDate},{acousticness},{artists},{danceability},{durationMS},{energy},' \
+                                f'{explicit},{id},{instrumentalness},{key},{liveness},{loudness},{mode},"{trackName}",{popularity},{releaseDate},{speechiness},{tempo}\n')
+
+playlistSongsFile.close()
+
+n = 10
+
+### WORKING ON
+songVectorData = []
+newData = pd.read_csv("playlistSongs.csv", on_bad_lines="skip", encoding='cp1252')
+for i in range(newData.shape[0]):
+    songData = newData.loc[i,:]
+    songVector = songData[colOrder].values
+    songVectorData.append(songVector)
+songDataArray = np.array(list(songVectorData))
+meanVector = np.mean(songDataArray, axis=0)
+print(meanVector)
+
+print("1")
+scaler = cluster_pipeline.steps[0][1]
+print("1")
+scaled_data = scaler.transform(data[colOrder])
+print("1")
+scaled_song_center = scaler.transform(meanVector.reshape(1, -1))
+print("1")
+distances = cdist(scaled_song_center, scaled_data, 'cosine')
+print("1")
+index = list(np.argsort(distances)[:, :n][0])
+print("1")
+    
+rec_songs = data.iloc[index]
+print(rec_songs)
 
