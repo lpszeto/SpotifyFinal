@@ -13,28 +13,30 @@ from sklearn.cluster import KMeans
 from sklearn.preprocessing import StandardScaler
 from sklearn.pipeline import Pipeline
 from sklearn.decomposition import PCA
+from sklearn.metrics import euclidean_distances
+from scipy.spatial.distance import cdist
 
-# data = pd.read_csv("data.csv")
+data = pd.read_csv("data.csv")
 
 # #K-Means 
-# cluster_pipline = Pipeline([('scaler', StandardScaler()), ('kmeans', KMeans(n_clusters=20, verbose=False))], verbose=False)
-# X = data.select_dtypes(np.number)
-# num_col = list(X.columns)
-# cluster_pipline.fit(X)
-# cluster_labels = cluster_pipline.predict(X)
-# data['cluster_label'] = cluster_labels
+cluster_pipeline = Pipeline([('scaler', StandardScaler()), ('kmeans', KMeans(n_clusters=20, verbose=False))], verbose=False)
+X = data.select_dtypes(np.number)
+num_col = list(X.columns)
+cluster_pipeline.fit(X)
+cluster_labels = cluster_pipeline.predict(X)
+data['cluster_label'] = cluster_labels
 
-# #Visualizing Cluster PCA 
-# pca_pipeline = Pipeline([('scaler', StandardScaler()), ('PCA', PCA(n_components=2))])
-# song_embedding = pca_pipeline.fit_transform(X)
-# projection = pd.DataFrame(columns=['x', 'y'], data=song_embedding)
-# projection['title'] = data['name']
-# projection['artists'] = data['artists']
-# projection['cluster'] = data['cluster_label']
+#Visualizing Cluster PCA 
+pca_pipeline = Pipeline([('scaler', StandardScaler()), ('PCA', PCA(n_components=2))])
+song_embedding = pca_pipeline.fit_transform(X)
+projection = pd.DataFrame(columns=['x', 'y'], data=song_embedding)
+projection['title'] = data['name']
+projection['artists'] = data['artists']
+projection['cluster'] = data['cluster_label']
 
 
-# fig = px.scatter(projection, x='x', y='y', color='cluster', hover_data=['x', 'y', 'title', 'artists'])
-# fig.show()
+fig = px.scatter(projection, x='x', y='y', color='cluster', hover_data=['x', 'y', 'title', 'artists'])
+fig.show()
 
 colOrder = ['valence', 'year', 'acousticness', 'danceability', 'duration_ms', 'energy', 'explicit',
  'instrumentalness', 'key', 'liveness', 'loudness', 'mode', 'popularity', 'speechiness', 'tempo']
@@ -47,7 +49,6 @@ def loginToSpotify():
     auth_manager = SpotifyClientCredentials(client_id=SPOTIPY_CLIENT_ID, client_secret=SPOTIPY_CLIENT_SECRET)
     sp = spotipy.Spotify(auth_manager=auth_manager)
     return sp
-
 def searchPlaylist(sp):
     playlistLink = input("Please Enter Playlist URL\n")
     playlistDict = sp.playlist(playlistLink)
@@ -114,38 +115,31 @@ for i in range(totalSongs):
 
 playlistSongsFile.close()
 
+n = 10
 
 ### WORKING ON
-# songVectorData = []
-# data = pd.read_csv("playlistSongs.csv")
-# for i in range(data.shape[0]):
-#     songData = data.loc[i,:]
-#     songVector = songData[colOrder].values
-#     songVectorData.append(songVector)
-# songDataArray = np.array(list(songVectorData))
-# meanVector = np.mean(songDataArray, axis=0)
-# print(meanVector)
-# scaler = song_cluster_pipeline.steps[0][1]
-## WORKING ON
+songVectorData = []
+newData = pd.read_csv("playlistSongs.csv", on_bad_lines="skip", encoding='cp1252')
+for i in range(newData.shape[0]):
+    songData = newData.loc[i,:]
+    songVector = songData[colOrder].values
+    songVectorData.append(songVector)
+songDataArray = np.array(list(songVectorData))
+meanVector = np.mean(songDataArray, axis=0)
+print(meanVector)
 
-
-# #K-Means 
-# cluster_pipline = Pipeline([('scaler', StandardScaler()), ('kmeans', KMeans(n_clusters=4, verbose=False))], verbose=False)
-# X = data.select_dtypes(np.number)
-# num_col = list(X.columns)
-# cluster_pipline.fit(X)
-# cluster_labels = cluster_pipline.predict(X)
-# data['cluster_label'] = cluster_labels
-
-# #Visualizing Cluster PCA 
-# pca_pipeline = Pipeline([('scaler', StandardScaler()), ('PCA', PCA(n_components=2))])
-# song_embedding = pca_pipeline.fit_transform(X)
-# projection = pd.DataFrame(columns=['x', 'y'], data=song_embedding)
-# projection['title'] = data['name']
-# projection['artists'] = data['artists']
-# projection['cluster'] = data['cluster_label']
-
-
-# fig = px.scatter(projection, x='x', y='y', color='cluster', hover_data=['x', 'y', 'title', 'artists'])
-# fig.show()
+print("1")
+scaler = cluster_pipeline.steps[0][1]
+print("1")
+scaled_data = scaler.transform(data[colOrder])
+print("1")
+scaled_song_center = scaler.transform(meanVector.reshape(1, -1))
+print("1")
+distances = cdist(scaled_song_center, scaled_data, 'cosine')
+print("1")
+index = list(np.argsort(distances)[:, :n][0])
+print("1")
+    
+rec_songs = data.iloc[index]
+print(rec_songs)
 
