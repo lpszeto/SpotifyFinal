@@ -1,25 +1,81 @@
 valence,year,acousticness,artists,danceability,duration_ms,energy,explicit,id,instrumentalness,key,liveness,loudness,mode,name,popularity,release_date,speechiness,tempo
-0.616,2020,0.476,['Sheff G'],0.85,153561,0.458,0,3VayB5gLZGODx8b7RO1y5f,0,8,0.26,-7.82,1,"No Suburban Pt. 2",70,2020,0.339,143.973
-0.305,2020,0.0301,['Pop Smoke'],0.772,135747,0.878,0,57BGVV6wcyhbn3hsjlqEZB,2.18e-06,2,0.251,-4.22,1,"Element",79,2020,0.324,61.311
-0.674,2021,0.391,"['Polo G', 'Pop Smoke', 'Fivio Foreign']",0.734,165405,0.712,0,4CPcZHzSvIBM8AKhdHUwnL,0,6,0.103,-6.217,0,"Clueless (with Pop Smoke & Fivio Foreign)",65,2021,0.201,140.369
-0.728,2021,0.336,"['Pop Smoke', 'Dua Lipa']",0.675,184800,0.608,0,3DMs7bahbQTnoxCjgP7qoK,0,3,0.11,-6.934,0,"Demeanor (feat. Dua Lipa)",64,2021,0.103,99.865
-0.284,2021,0.359,"['Pop Smoke', 'Chris Brown']",0.563,156000,0.672,0,58T4yPLn4NjBYXfRxeweyM,0,9,0.0972,-7.226,0,"Woo Baby (feat. Chris Brown)",71,2021,0.0765,99.772
-0.778,2021,0.275,"['Pop Smoke', 'Future']",0.795,214925,0.582,0,3Zg68ElzsOAHABZsfXlljo,0,0,0.239,-7.365,0,"Mr. Jones (feat. Future)",54,2021,0.054,134.055
-0.595,2021,0.107,"['Pop Smoke', 'Bizzy Banks']",0.578,228252,0.684,0,24YG5Z8Of1VHovrfXsbvCZ,0,0,0.49,-5.908,1,"30 (feat. Bizzy Banks)",61,2021,0.191,106.743
-0.411,2021,0.526,"['Pop Smoke', '21 Savage', '42 Dugg']",0.716,203586,0.67,0,4LaGu95Ui2s4vprSQYWUAZ,0,0,0.13,-6.995,0,"Bout A Million (feat. 42 Dugg & 21 Savage)",64,2021,0.101,145.043
-0.347,2020,0.114,"['Pop Smoke', 'Lil Baby', 'DaBaby']",0.823,190476,0.586,0,0PvFJmanyNQMseIFrU708S,0,6,0.193,-6.606,0,"For The Night (feat. Lil Baby & DaBaby)",81,2020,0.2,125.971
-0.158,2020,0.43,"['Kid Cudi', 'Skepta', 'Pop Smoke']",0.619,174960,0.589,0,5CFJRZRq6sdKKtRwNPWbYv,0.000392,1,0.378,-6.531,1,"Show Out (with Skepta & Pop Smoke)",71,2020,0.124,143.896
-0.303,2020,0.0352,"['Lil Tjay', 'Fivio Foreign', 'Pop Smoke']",0.565,214825,0.569,0,3Ddny34bFoYBb8dIGq5lwp,8.81e-06,6,0.106,-6.084,0,"Zoo York (feat. Fivio Foreign & Pop Smoke)",66,2020,0.379,92.466
-0.357,2021,0.0951,"['Lil Tjay', 'Fivio Foreign', 'Kay Flock']",0.545,150476,0.82,0,25GyyK9CyZRiDCsPY51fIT,0,8,0.29,-4.489,1,"Not In The Mood (feat. Fivio Foreign & Kay Flock)",68,2021,0.275,141.908
-0.901,2022,0.0353,"['Kay Flock', 'Cardi B', 'Dougie B', 'Bory300']",0.87,118249,0.835,0,0RkCnqwF8Tfl2QGPZwopyk,0,1,0.142,-5.875,1,"Shake It (feat. Cardi B Dougie B & Bory300)",71,2022,0.311,140.051
-0.632,2021,0.515,['Kay Flock'],0.894,124514,0.797,0,2QXWdzWLvRZToFFyY49Exz,0,4,0.0654,-9.452,0,"Is Ya Ready",63,2021,0.361,143.917
-0.407,2022,0.159,['Lil Tjay'],0.684,135264,0.545,0,1HvTxgCj0mTzQlEo0zLvFb,0,1,0.102,-6.885,1,"In My Head",78,2022,0.121,143.049
-0.501,2022,0.14,"['Fivio Foreign', 'Lil Tjay', 'Yung Bleu']",0.776,211064,0.69,0,6HDe7ITVyXYBZWJ2SaBU0x,0,8,0.0944,-6.542,0,"World Watching (feat. Lil Tjay & Yung Bleu)",55,2022,0.229,141.038
-0.478,2022,0.054,['Lil Tjay'],0.498,150000,0.625,0,2BJWxD8xKrDv8vneTvTIm9,0,8,0.175,-7.452,0,"Beat the Odds",77,2022,0.342,84.821
-0.392,2021,0.0758,"['Lil Tjay', 'Polo G', 'Fivio Foreign']",0.809,144349,0.638,0,6cQ08IpBxxfGcSKxqE3NmB,0,1,0.15,-7.268,0,"Headshot (feat. Polo G & Fivio Foreign)",0,2021,0.257,117.982
-0.497,2022,0.102,"['Fivio Foreign', 'Kanye West', 'Alicia Keys']",0.474,256000,0.801,0,4huBDGP4I3S0pYI0EaRN1c,0,8,0.322,-5.978,0,"City of Gods",68,2022,0.375,147.356
-0.406,2022,0.0185,"['Fivio Foreign', 'The Kid LAROI']",0.642,130897,0.787,0,5QvW5lK6mkfTegpAK9JOO7,0,5,0.288,-6.389,0,"Paris to Tokyo",69,2022,0.17,146.733
-0.293,2021,0.1,"['Spinabenz', 'Yungeen Ace', 'FastMoney Goon', 'Whoppa Wit Da Choppa']",0.815,134187,0.737,0,2fujhLR4zhDRPbYDhI0xRr,0,11,0.123,-6.968,1,"Who I Smoke",60,2021,0.188,99.95
-0.646,2021,0.456,['Ciggy Blacc'],0.782,109767,0.845,0,66psczHHIdXT4VY9SdV9Fj,0,1,0.135,-5.64,1,"Butterfly",43,2021,0.249,140.054
-0.972,2022,0.38,['Central Cee'],0.911,97393,0.573,0,3LtpKP5abr2qqjunvjlX5i,0,6,0.403,-7.43,1,"Doja",89,2022,0.288,140.04
-0.757,2021,0.228,['Central Cee'],0.905,188690,0.571,0,1o6x7iRcDQPEEg8YPgLeVA,0,2,0.113,-7.979,1,"Day in the Life",75,2021,0.357,144.892
+0.591,2014,0.0489,['Ariana Grande'],0.525,204093,0.621,0,0lizgQ7Qw35od7CYaoMBZb,0,7,0.294,-7.364,1,"Santa Tell Me",92,2014,0.116,191.9
+0.35,1994,0.164,['Mariah Carey'],0.336,241107,0.627,0,0bYg9bo50gSsH3LtXe2SQn,0,7,0.0708,-7.463,1,"All I Want for Christmas Is You",96,1994,0.0384,150.273
+0.898,1964,0.614,['Brenda Lee'],0.589,126267,0.472,0,2EjXfH91m7f8HiJN1yQg97,0,8,0.505,-8.749,1,"Rockin' Around The Christmas Tree",94,1964,0.0502,67.196
+0.689,2013,0.00128,['Kelly Clarkson'],0.509,229640,0.812,0,3YZE5qDV7u1ZD1gZc47ZeR,1.99e-05,8,0.214,-5.439,1,"Underneath the Tree",82,2013,0.0537,159.878
+0.861,2006,0.262,['Wham!'],0.757,267160,0.618,0,6wn2nmFn3wDuiMldRiuRuL,0,11,0.221,-7.964,0,"Last Christmas - Remastered",81,2006,0.0282,106.856
+0.912,2020,0.0152,"['Gwen Stefani', 'Blake Shelton']",0.635,156773,0.87,0,3SjaE7SExrVnRZi45KXT3O,0,2,0.118,-4.291,0,"You Make It Feel Like Christmas (with Blake Shelton)",73,2020,0.04,92.999
+0.363,2012,0.908,['Michael Bublé'],0.339,206640,0.214,0,5a1iz510sv2W9Dt1MvFd5R,7.47e-06,4,0.341,-11.714,1,"It's Beginning to Look a Lot like Christmas",88,2012,0.0375,94.775
+0.702,2000,0.169,['Britney Spears'],0.669,255400,0.843,0,0YWUHZPJVg4iujddsJDwhM,0,0,0.195,-3.766,1,"My Only Wish (This Year)",84,2000,0.0268,147.08
+0.437,2019,0.06,['Taylor Swift'],0.598,228027,0.68,0,2mvabkN1i2gLnGAPUVdwek,0,7,0.324,-4.505,1,"Christmas Tree Farm",81,2019,0.0331,134.002
+0.57,2022,0.00768,['Sabrina Carpenter'],0.722,153100,0.75,0,7yogx3TwxGwSxO2QITsT2q,0,8,0.128,-4.051,1,"A Nonsense Christmas",69,2022,0.0445,139.019
+0.854,2011,0.498,['Justin Bieber'],0.657,182947,0.56,0,7xapw9Oy21WpfEcib2ErSA,0,6,0.0794,-9.049,0,"Mistletoe",88,2011,0.0467,161.993
+0.756,1998,0.104,['*NSYNC'],0.643,255307,0.939,0,4v9WbaxW8HdjqfUiWYWsII,0,5,0.881,-3.967,1,"Merry Christmas Happy Holidays",79,1998,0.0463,104.999
+0.366,2017,0.47,['Pentatonix'],0.364,268960,0.378,0,0HZk0QsXPhMNAWNDR3rYE8,0,7,0.339,-7.381,0,"Hallelujah",75,2017,0.0331,89.918
+0.462,2021,0.005,"['Kelly Clarkson', 'Ariana Grande']",0.495,242645,0.896,0,2O3MQ6H3gjrIWDcpeTrikT,0,11,0.353,-2.381,1,"Santa Can’t You Hear Me",79,2021,0.0331,146.04
+0.575,2022,0.292,"['sped up nightcore', 'Sia']",0.764,137578,0.417,0,3BwbSLW4YtIGkhCNFsHu52,0,4,0.0832,-9.16,1,"Snowman - Sped Up Version",73,2022,0.0461,126.004
+0.699,2011,0.865,['Michael Bublé'],0.647,119787,0.465,0,6tjituizSxwSmBB5vtgHZE,0,7,0.0882,-8.308,1,"Holly Jolly Christmas",80,2011,0.0428,151.251
+0.898,1998,0.104,['Spice Girls'],0.74,257933,0.857,0,1O2ymfIOPUz7RLzjDCnCWv,0,9,0.109,-6.134,1,"Christmas Wrapping",64,1998,0.0414,115.954
+0.603,2021,0.169,['MisterWives'],0.629,142893,0.657,0,7Ao5aouOwI94DuwcXa5X1i,2.74e-05,4,0.454,-7.771,1,"Jingle Bell Rock -Spotify Singles Holiday",72,2021,0.0313,120.013
+0.205,2019,0.871,['Ryland James'],0.399,197093,0.349,0,3cZRpCsi78sk2u4XW0vosp,9e-05,9,0.101,-9.011,1,"Please Come Home For Christmas",72,2019,0.0271,172.0
+0.317,2022,0.0243,"['Pentatonix', 'Meghan Trainor']",0.419,202600,0.817,0,5glU2EWqa5hpYqGPboSNjV,0,2,0.251,-4.704,1,"Kid On Christmas (feat. Meghan Trainor)",75,2022,0.0468,78.107
+0.754,2013,0.464,['Leona Lewis'],0.638,239587,0.813,0,78pn8k7RogKo2oxl0DyX6d,0,11,0.344,-3.849,1,"One More Sleep",80,2013,0.0362,112.986
+0.61,2019,0.0183,['Jonas Brothers'],0.725,200880,0.571,0,1OjmlSFuzYflWjSMTCyTJv,0,1,0.0519,-6.007,1,"Like It's Christmas",81,2019,0.102,146.035
+0.424,2018,0.134,"['Lindsey Stirling', 'Sabrina Carpenter']",0.567,166133,0.695,0,6TXAjof8V0Gr4zFoY00zHR,0,9,0.177,-4.896,0,"You’re A Mean One Mr. Grinch",64,2018,0.0559,107.934
+0.48,2021,0.215,['John Legend'],0.524,198627,0.739,0,2ZAEbbKPNf1Wv1fifB2nyd,0,0,0.0636,-6.681,1,"You Deserve It All",74,2021,0.0386,83.095
+0.826,1997,0.00129,['Hanson'],0.529,223133,0.883,0,5MPd7GzOkGRoFBaSqmqiSL,0.034,6,0.145,-5.848,1,"What Christmas Means To Me",73,1997,0.0419,167.705
+0.315,2021,0.97,"['Laufey', 'dodie']",0.669,158133,0.208,0,3bq7dXN7arTdaq8mmKXxob,0.000524,0,0.106,-12.539,1,"Love to Keep Me Warm",71,2021,0.0692,139.928
+0.344,2014,0.957,['Sam Smith'],0.438,170964,0.178,0,1Qi2wh8fFgDV7tl4Sj3f2K,0,5,0.316,-9.402,1,"Have Yourself A Merry Little Christmas",83,2014,0.0414,75.248
+0.849,2020,0.0339,"['Mariah Carey', 'Ariana Grande', 'Jennifer Hudson']",0.648,200467,0.938,0,2VkuxjlbnbaBiWYpdBGVol,1.28e-06,1,0.0564,-3.298,1,"Oh Santa! (feat. Ariana Grande & Jennifer Hudson)",69,2020,0.115,78.496
+0.272,2020,0.595,['Ralph'],0.647,208800,0.587,0,6V5MkZb6BkvfcppHRO8zvf,0,11,0.0754,-6.311,1,"Hard Candy Christmas",66,2020,0.037,99.966
+0.585,2022,0.00407,['Caylee Hammack'],0.3,162840,0.91,0,54H84HFq1hUDEOcYxbTjrL,0,3,0.0819,-2.002,1,"Christmas (Baby Please Come Home)",70,2022,0.0533,132.242
+0.382,2020,0.424,['Ava Max'],0.654,169245,0.596,0,1QLZKzC2pjP4ySf4ALrNhm,0,1,0.11,-4.68,1,"Christmas Without You",80,2020,0.0458,118.078
+0.962,2015,0.146,['Sabrina Carpenter'],0.565,179427,0.898,0,065CI94mu3IZwqPU4BX4Cb,0,6,0.131,-2.956,1,"Christmas the Whole Year Round",69,2015,0.0915,187.917
+0.513,2018,0.427,['Meghan Trainor'],0.566,194312,0.437,0,71azyw4EJDlGru5Uw6DGzT,3.35e-06,9,0.373,-10.13,1,"White Christmas - Spotify Singles - Christmas Recorded at Sound Stage Studios Nashville",70,2018,0.0359,67.053
+0.485,2000,0.121,['Christina Aguilera'],0.662,241600,0.844,0,49k6iIn3ceIhyeFNSQChQh,2.04e-06,1,0.539,-4.897,0,"Christmas Time",62,2000,0.0728,99.639
+0.544,2022,0.285,['Tyler Shaw'],0.633,147673,0.525,0,69ICDnEzZqopqoQ7LG2e2u,0,8,0.105,-3.946,1,"This Christmas",68,2022,0.0237,95.068
+0.56,2018,0.128,['Katy Perry'],0.774,182521,0.608,0,02FaKXXL7KUtRc7K0k54tL,0,7,0.0895,-6.264,1,"Cozy Little Christmas",79,2018,0.128,137.494
+0.436,2016,0.548,['Kylie Minogue'],0.201,164867,0.762,0,4xjKPpeWbUCgQo6VnJLHZB,0,9,0.0839,-5.802,0,"It's the Most Wonderful Time of the Year",67,2016,0.0578,202.936
+0.134,2002,0.732,['Carpenters'],0.363,185907,0.338,0,6W65jVdn0JtttcvFN1KppC,0,7,0.132,-8.148,1,"Merry Christmas Darling - Single Version",67,2002,0.0283,81.595
+0.101,2020,0.695,['Tori Kelly'],0.297,183547,0.178,0,0yHmaiDRUkiQcl0heatewy,0,3,0.292,-10.578,0,"Christmas Time Is Here",61,2020,0.0307,79.555
+0.161,2022,0.662,['Backstreet Boys'],0.254,273395,0.47,0,56oYlOg8iTHa99Oo6LikDx,0,4,0.274,-7.944,1,"Christmas in New York",68,2022,0.0288,96.513
+0.796,1974,0.0887,['Elton John'],0.54,272333,0.928,0,11P4sSu6BH2lAbWk1sL6cK,1.11e-05,2,0.314,-6.252,1,"Step Into Christmas",68,1974,0.0337,140.419
+0.587,2001,0.0493,["Destiny's Child"],0.685,209360,0.8,0,7o4HtESXicUqk3oRqngIsS,0,9,0.0799,-1.866,0,"8 Days of Christmas",69,2001,0.202,99.675
+0.804,2022,0.289,['Dan + Shay'],0.727,181027,0.726,0,2ZiKXOsDvx9TfXIJT5cZGN,0,2,0.362,-3.813,1,"Holiday Party",68,2022,0.0243,107.956
+0.305,2019,0.13,['Alessia Cara'],0.522,211013,0.522,0,6RS6rcjnWrdfVuu2U2W2dj,0,2,0.438,-7.87,1,"Make It To Christmas",78,2019,0.0383,77.072
+0.684,2018,0.608,['Jessie J'],0.626,163560,0.676,0,2Ysi49tRdVH74d1Cnc4o94,0,7,0.493,-3.178,1,"Man With The Bag",76,2018,0.0739,140.677
+0.766,2017,0.193,['Miley Cyrus'],0.583,184953,0.749,0,7enVhl0fuHvQ4ErXvAXYIH,0,2,0.151,-8.286,1,"Sleigh Ride",69,2017,0.0453,166.213
+0.407,1981,0.362,['Bruce Springsteen'],0.357,267600,0.668,0,6s2wpWPFPAgKg2LXxi1Oee,1.37e-06,0,0.727,-8.444,1,"Santa Claus Is Comin' to Town - Live at C.W. Post College Greenvale NY - December 1975",82,1981,0.0479,139.986
+0.392,2019,0.874,"['Kacey Musgraves', 'Troye Sivan']",0.509,143467,0.307,0,4dFtIGQBrYjiskk7fN5Wmx,0,1,0.701,-9.616,0,"Glittery - From The Kacey Musgraves Christmas Show",70,2019,0.0307,85.471
+0.602,2021,0.243,"['Ed Sheeran', 'Elton John']",0.594,208547,0.935,0,3bH2Eu9A9ymI4UnGHRmoXg,2.36e-06,0,0.102,-2.018,1,"Merry Christmas",82,2021,0.0357,113.99
+0.777,2021,0.373,['Meghan Trainor'],0.485,161013,0.444,0,3LOfU1kaplBBNd2jeiGa0N,2.5e-06,1,0.0969,-6.232,1,"My Kind Of Present",66,2021,0.195,179.967
+0.62,1945,0.646,"['Bing Crosby', 'The Andrews Sisters']",0.5,175333,0.224,0,04vLj9QUXoKdRlsp3gkURo,0,3,0.284,-12.431,1,"Mele Kalikimaka (Merry Christmas)",75,1945,0.0935,202.481
+0.868,2020,0.0103,['Caveboy'],0.669,131471,0.615,0,796k6Hy4NnPq2TSBieDIwH,0,7,0.391,-3.567,1,"Jolly Old Saint Nicholas",65,2020,0.0273,136.077
+0.771,2022,0.0224,['Sarah Connor'],0.673,239707,0.813,0,03qftRowv8aPZnNZbILxUR,0,0,0.0608,-4.082,1,"Ring Out The Bells",75,2022,0.046,139.996
+0.553,2021,0.121,['salem ilese'],0.637,156266,0.705,0,5EHoaIl9RURnb8nhyf26ug,0,10,0.0857,-7.546,0,"Thank You Note",66,2021,0.0502,158.013
+0.275,2020,0.0889,['Tegan and Sara'],0.603,186693,0.684,0,62k0PJ7guenoJoQHUYeN8o,0.00306,1,0.255,-6.845,1,"Make You Mine This Season",65,2020,0.0312,131.985
+0.572,2021,0.0429,['Kelly Clarkson'],0.58,231549,0.789,0,4zHDuDQx8dcWVmVVtyIzRO,0,1,0.146,-4.918,0,"Christmas Isn't Canceled (Just You)",68,2021,0.0457,139.901
+0.921,1984,0.505,['Boney M.'],0.771,270440,0.526,0,3Fi1Omhrp7yzJOCbhzhpLk,0,0,0.13,-13.172,1,"Mary's Boy Child",59,1984,0.0455,112.507
+0.724,2018,0.0215,['Sia'],0.547,205267,0.814,0,1N1ZpYUJc9fwrqk53FGgWv,0,1,0.0475,-6.191,1,"Santa's Coming for Us",79,2018,0.12,92.986
+0.944,2005,0.00163,['Girls Aloud'],0.639,161933,0.877,0,55fhKXmY0UzzGT4AUwNvRe,0,9,0.205,-4.615,1,"Not Tonight Santa",65,2005,0.042,137.009
+0.342,2020,0.777,"['JP Saxe', 'Julia Michaels']",0.528,224084,0.343,0,2nZq5WQOW4FEPxCVTdNGfB,0,0,0.162,-7.62,1,"Kissin' In The Cold",70,2020,0.036,64.879
+0.849,2011,0.634,"['Michael Bublé', 'The Puppini Sisters']",0.702,159973,0.588,0,4qBejt9FeqLI9blHI1Nq1x,0,5,0.198,-5.914,1,"Jingle Bells (feat. The Puppini Sisters)",68,2011,0.0563,122.945
+0.245,2020,0.757,['Sasha Alex Sloan'],0.65,122186,0.0919,0,6CXNzOwENnzLV09gvmqrH1,0,5,0.0806,-14.901,1,"I Saw Mommy Kissing Santa Claus - Spotify Holiday Single",65,2020,0.0538,129.841
+0.456,2021,0.695,"['Darren Criss', 'Lainey Wilson']",0.674,203853,0.508,0,5dvSKxpjDxRNy4Wyuz5g1j,0,5,0.143,-6.565,1,"Drunk On Christmas",65,2021,0.0336,111.8
+0.31,2019,0.296,['Lukas Graham'],0.742,240689,0.625,0,1Cth2nNUYYfCiSoIei6rCi,0,8,0.148,-5.296,1,"HERE (For Christmas)",66,2019,0.059,114.902
+0.37,2020,0.104,['Little Mix'],0.535,192945,0.646,0,632gXr9GJAsy7UBd7Dg7G4,0,0,0.0818,-4.377,1,"One I've Been Missing",71,2020,0.0294,97.963
+0.777,2013,0.0501,"['Ariana Grande', 'Liz Gillies']",0.748,170933,0.778,0,6YJdPrH3i2POzu7hdHIRrb,0,0,0.284,-5.752,1,"Santa Baby",78,2013,0.137,95.989
+0.287,2021,0.684,['Sigrid'],0.616,225818,0.321,0,1SBo8LdLGOieucdStHz6iV,0,8,0.148,-5.505,1,"Home To You (This Christmas)",69,2021,0.0313,139.233
+0.526,2020,0.227,"['Tori Kelly', 'Babyface']",0.414,118395,0.664,0,3BhlC2eX8obANfmLEwo1ia,0,1,0.271,-5.664,1,"Let It Snow (with Babyface)",66,2020,0.0415,137.095
+0.149,2018,0.151,['OneRepublic'],0.422,126514,0.449,0,6ufGxYHEaHNoF3Wvr3xMuj,0,5,0.21,-8.447,1,"White Christmas",66,2018,0.0302,108.103
+0.286,2019,0.781,['John Legend'],0.424,255893,0.458,0,2cUW96AVns2GoEO3DWGo8v,2.9e-06,0,0.287,-9.22,0,"The Christmas Song (Chestnuts Roasting On An Open Fire)",64,2019,0.0314,91.606
+0.645,2012,0.777,['Jason Mraz'],0.609,127080,0.359,0,0zXjeGMMe7esPTvqJCN5d8,0,5,0.221,-6.715,1,"Winter Wonderland",63,2012,0.0468,145.178
+0.771,1980,0.322,['Paul McCartney'],0.774,227653,0.511,0,1SV1fxF65n9NhRHp3KlBuu,0,11,0.0672,-8.914,1,"Wonderful Christmastime - Edited Version / Remastered 2011",87,1980,0.0319,94.736
+0.487,2017,0.103,['Pentatonix'],0.602,207560,0.493,0,5P5rUzjpgTkZeQbr0CVdsZ,0,8,0.119,-6.907,1,"I'll Be Home For Christmas",69,2017,0.0308,112.979
+0.484,1995,0.262,['Whitney Houston'],0.453,212400,0.741,0,5umJVEAPT2SocCoB99ZoaH,0,9,0.0729,-8.676,1,"Do You Hear What I Hear?",68,1995,0.0396,72.65
+0.625,2013,0.139,['Kelly Clarkson'],0.298,169093,0.802,0,3DzYn4QDEQcyLMD1DQTbYw,0,11,0.207,-5.134,0,"My Favorite Things",65,2013,0.145,179.379
+0.414,2010,0.28,"['John Lennon', 'Yoko Ono']",0.321,214333,0.64,0,27RYrbL6S02LNVhDWVl38b,0,2,0.718,-10.023,1,"Happy Xmas (War Is Over) - Remastered 2010",87,2010,0.0324,146.172
+0.572,2010,0.0031,['Train'],0.458,232213,0.831,0,1NghHeg0wE32eBYrQBVQXL,0,0,0.337,-2.187,1,"Shake Up Christmas",75,2010,0.0654,81.531
+0.508,2017,0.834,['Noah Cyrus'],0.735,179113,0.237,0,5TN42y2ut6ATB0IDEEgQay,0,4,0.0901,-8.827,1,"It's Beginning to Look a Lot Like Christmas",65,2017,0.0396,94.144
+0.349,1984,0.164,['Band Aid'],0.598,222533,0.643,0,4Yg2w0P29BBBMixyeNjDtj,3.35e-05,0,0.0992,-6.933,1,"Do They Know It's Christmas? - 1984 Version",86,1984,0.0364,115.41
+0.199,2012,0.768,['Christina Perri'],0.557,198640,0.322,0,6brLwOYFXw7rkGOcLntcPZ,0.000188,0,0.0985,-12.039,1,"merry christmas darling",65,2012,0.0275,75.985

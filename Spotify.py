@@ -16,7 +16,7 @@ from scipy.spatial.distance import cdist
 from kneed import KneeLocator
 
 ## n is the amount of songs you want to recommend
-n = 25
+n = 2
 data = pd.read_csv("data.csv")
 
 #K-Means 
@@ -36,86 +36,86 @@ projection['artists'] = data['artists']
 projection['cluster'] = data['cluster_label']
 
 
-fig = px.scatter(projection, x='x', y='y', color='cluster', hover_data=['x', 'y', 'title', 'artists'])
-fig.show()
+# fig = px.scatter(projection, x='x', y='y', color='cluster', hover_data=['x', 'y', 'title', 'artists'])
+# fig.show()
 
 colOrder = ['valence', 'year', 'acousticness', 'danceability', 'duration_ms', 'energy', 'explicit',
  'instrumentalness', 'key', 'liveness', 'loudness', 'mode', 'popularity', 'speechiness', 'tempo']
 
-## GETTING SPOTIFY SONG DATA FROM USER
-def loginToSpotify():
-    with open(r"credentials.txt") as f:
-        [SPOTIPY_CLIENT_ID,SPOTIPY_CLIENT_SECRET] = f.read().split("\n")
-        f.close()
-    auth_manager = SpotifyClientCredentials(client_id=SPOTIPY_CLIENT_ID, client_secret=SPOTIPY_CLIENT_SECRET)
-    sp = spotipy.Spotify(auth_manager=auth_manager)
-    return sp
+# ## GETTING SPOTIFY SONG DATA FROM USER
+# def loginToSpotify():
+#     with open(r"credentials.txt") as f:
+#         [SPOTIPY_CLIENT_ID,SPOTIPY_CLIENT_SECRET] = f.read().split("\n")
+#         f.close()
+#     auth_manager = SpotifyClientCredentials(client_id=SPOTIPY_CLIENT_ID, client_secret=SPOTIPY_CLIENT_SECRET)
+#     sp = spotipy.Spotify(auth_manager=auth_manager)
+#     return sp
 
-def searchPlaylist(sp):
-    playlistLink = input("Please Enter Playlist URL\n")
-    playlistDict = sp.playlist(playlistLink)
-    return playlistDict
+# def searchPlaylist(sp):
+#     playlistLink = input("Please Enter Playlist URL\n")
+#     playlistDict = sp.playlist(playlistLink)
+#     return playlistDict
 
-def getAudioFeatures(sp, songID):
-    valence = sp.audio_features(songID)[0]['valence']
-    acousticness = sp.audio_features(songID)[0]['acousticness']
-    danceability = sp.audio_features(songID)[0]['danceability']
-    durationMS = sp.audio_features(songID)[0]['duration_ms']
-    energy = sp.audio_features(songID)[0]['energy']
-    id = sp.audio_features(songID)[0]['id']
-    instrumentalness = sp.audio_features(songID)[0]['instrumentalness']
-    key = sp.audio_features(songID)[0]['key']
-    liveness = sp.audio_features(songID)[0]['liveness']
-    loudness = sp.audio_features(songID)[0]['loudness']
-    mode = sp.audio_features(songID)[0]['mode']
-    speechiness = sp.audio_features(songID)[0]['speechiness']
-    tempo = sp.audio_features(songID)[0]['tempo']
+# def getAudioFeatures(sp, songID):
+#     valence = sp.audio_features(songID)[0]['valence']
+#     acousticness = sp.audio_features(songID)[0]['acousticness']
+#     danceability = sp.audio_features(songID)[0]['danceability']
+#     durationMS = sp.audio_features(songID)[0]['duration_ms']
+#     energy = sp.audio_features(songID)[0]['energy']
+#     id = sp.audio_features(songID)[0]['id']
+#     instrumentalness = sp.audio_features(songID)[0]['instrumentalness']
+#     key = sp.audio_features(songID)[0]['key']
+#     liveness = sp.audio_features(songID)[0]['liveness']
+#     loudness = sp.audio_features(songID)[0]['loudness']
+#     mode = sp.audio_features(songID)[0]['mode']
+#     speechiness = sp.audio_features(songID)[0]['speechiness']
+#     tempo = sp.audio_features(songID)[0]['tempo']
 
-    return valence, acousticness, danceability, durationMS, energy, id, instrumentalness, key, liveness, loudness, mode, speechiness, tempo
+#     return valence, acousticness, danceability, durationMS, energy, id, instrumentalness, key, liveness, loudness, mode, speechiness, tempo
 
 
 
-# SP is the api connection (spotify object)
-sp = loginToSpotify()
-playlistDict = searchPlaylist(sp)
+# # SP is the api connection (spotify object)
+# sp = loginToSpotify()
+# playlistDict = searchPlaylist(sp)
 
-totalSongs = playlistDict['tracks']['total']
-song_list = []
-song_id = []
-artist_id = []
+# totalSongs = playlistDict['tracks']['total']
+# song_list = []
+# song_id = []
+# artist_id = []
 
-playlistSongsFile = open('playlistSongs.csv', 'w')
-playlistSongsFile.write('valence,year,acousticness,artists,danceability,duration_ms,energy,explicit,id,instrumentalness,key,' \
-                                                    'liveness,loudness,mode,name,popularity,release_date,speechiness,tempo\n')
+# playlistSongsFile = open('playlistSongs.csv', 'w')
+# playlistSongsFile.write('valence,year,acousticness,artists,danceability,duration_ms,energy,explicit,id,instrumentalness,key,' \
+#                                                     'liveness,loudness,mode,name,popularity,release_date,speechiness,tempo\n')
 
-for i in range(totalSongs):
-    ## GETS TRACK INFO AND SONG INFO
-    artists = [k["name"] for k in playlistDict['tracks']['items'][i]["track"]["artists"]]
-    trackName = playlistDict['tracks']['items'][i]['track']['name']
-    trackName = trackName.replace(',', "")
-    artistName = artists[0]
-    songID = playlistDict['tracks']['items'][i]['track']['id']
-    uri = playlistDict['tracks']['items'][i]['track']['uri']
-    releaseDate = playlistDict['tracks']['items'][i]['track']['album']['release_date']
-    releaseDate = releaseDate.split('-')[0]
-    explicit = 1 if playlistDict['tracks']['items'][i]['track']['explicit'] == 'True' else 0
-    popularity = playlistDict['tracks']['items'][i]['track']['popularity']
+# for i in range(totalSongs):
+#     ## GETS TRACK INFO AND SONG INFO
+#     artists = [k["name"] for k in playlistDict['tracks']['items'][i]["track"]["artists"]]
+#     trackName = playlistDict['tracks']['items'][i]['track']['name']
+#     trackName = trackName.replace(',', "")
+#     artistName = artists[0]
+#     songID = playlistDict['tracks']['items'][i]['track']['id']
+#     uri = playlistDict['tracks']['items'][i]['track']['uri']
+#     releaseDate = playlistDict['tracks']['items'][i]['track']['album']['release_date']
+#     releaseDate = releaseDate.split('-')[0]
+#     explicit = 1 if playlistDict['tracks']['items'][i]['track']['explicit'] == 'True' else 0
+#     popularity = playlistDict['tracks']['items'][i]['track']['popularity']
 
-    ## IF THERE ARE MORE THAN ONE ARTISTS PUT THE LIST IN QUOTATIONS SO PANDAS CAN READ IT
-    if len(artists) > 1:
-        print(f"{trackName}, {artistName}, {songID}, {uri}")
-        valence, acousticness, danceability, durationMS, energy, id, instrumentalness, key, liveness, loudness, mode, speechiness, tempo = getAudioFeatures(sp, songID)
+#     ## IF THERE ARE MORE THAN ONE ARTISTS PUT THE LIST IN QUOTATIONS SO PANDAS CAN READ IT
+#     if len(artists) > 1:
+#         print(f"{trackName}, {artistName}, {songID}, {uri}")
+#         valence, acousticness, danceability, durationMS, energy, id, instrumentalness, key, liveness, loudness, mode, speechiness, tempo = getAudioFeatures(sp, songID)
         
-        playlistSongsFile.write(f'{valence},{releaseDate},{acousticness},"{artists}",{danceability},{durationMS},{energy},' \
-                                f'{explicit},{id},{instrumentalness},{key},{liveness},{loudness},{mode},"{trackName}",{popularity},{releaseDate},{speechiness},{tempo}\n')
-    else:
-        print(f"{trackName}, {artistName}, {songID}, {uri}")
-        valence, acousticness, danceability, durationMS, energy, id, instrumentalness, key, liveness, loudness, mode, speechiness, tempo = getAudioFeatures(sp, songID)
+#         playlistSongsFile.write(f'{valence},{releaseDate},{acousticness},"{artists}",{danceability},{durationMS},{energy},' \
+#                                 f'{explicit},{id},{instrumentalness},{key},{liveness},{loudness},{mode},"{trackName}",{popularity},{releaseDate},{speechiness},{tempo}\n')
+#     else:
+#         print(f"{trackName}, {artistName}, {songID}, {uri}")
+#         valence, acousticness, danceability, durationMS, energy, id, instrumentalness, key, liveness, loudness, mode, speechiness, tempo = getAudioFeatures(sp, songID)
         
-        playlistSongsFile.write(f'{valence},{releaseDate},{acousticness},{artists},{danceability},{durationMS},{energy},' \
-                                f'{explicit},{id},{instrumentalness},{key},{liveness},{loudness},{mode},"{trackName}",{popularity},{releaseDate},{speechiness},{tempo}\n')
-    print(f"Retrieved data for song {i+1}/{totalSongs}")
-playlistSongsFile.close()
+#         playlistSongsFile.write(f'{valence},{releaseDate},{acousticness},{artists},{danceability},{durationMS},{energy},' \
+#                                 f'{explicit},{id},{instrumentalness},{key},{liveness},{loudness},{mode},"{trackName}",{popularity},{releaseDate},{speechiness},{tempo}\n')
+#     print(f"Retrieved data for song {i+1}/{totalSongs}")
+# playlistSongsFile.close()
 
 
 # data = pd.read_csv("playlistSongs.csv", on_bad_lines='skip')
@@ -158,15 +158,24 @@ for i in range(newData.shape[0]):
     songVectorData.append(songVector)
 songDataArray = np.array(list(songVectorData))
 meanVector = np.mean(songDataArray, axis=0) ## Takes the mean and turns it into one array
-print(meanVector)
 
-## CREATE LOOP OF RANDOM 3
 scaler = cluster_pipeline.steps[0][1]
 scaled_data = scaler.transform(data[colOrder])
-scaled_song_center = scaler.transform(meanVector.reshape(1, -1))
-distances = cdist(scaled_song_center, scaled_data, 'cosine')
-index = list(np.argsort(distances)[:, :n][0])
+indexList = []
+
+for i in range(newData.shape[0]):
+    scaled_song_center = scaler.transform(songVectorData[i].reshape(1, -1))
+    distances = cdist(scaled_song_center, scaled_data, 'cosine')
+    index = list(np.argsort(distances)[:, :5][0])
+    indexList.append(index)
     
-rec_songs = data.iloc[index]
-print(rec_songs)
+# rec_songs = []
+df = newData.append(data.iloc[indexList[0]], ignore_index = True)
+for i in range(1, newData.shape[0]):
+    df = df.append(data.iloc[indexList[i]], ignore_index = True)
+    
+colToPrint = ["artists", "name"]
+df.to_csv("newAlg.csv", columns = colToPrint)
+print(df)
+# print(rec_songs)
 
