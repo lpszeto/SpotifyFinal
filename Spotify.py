@@ -18,9 +18,16 @@ from kneed import KneeLocator
 ## n is the amount of songs you want to recommend
 n = 25
 data = pd.read_csv("data.csv")
+X = data.select_dtypes(np.number)
+sse = []
+for k in range(1,20):
+    kmeans = KMeans(n_clusters=k).fit(X)
+    X["clusters"] = kmeans.labels_  
+    sse.append(kmeans.inertia_)
+kl = KneeLocator(range(1,20),sse, curve="convex", direction="decreasing")
 
 #K-Means 
-cluster_pipeline = Pipeline([('scaler', StandardScaler()), ('kmeans', KMeans(n_clusters=20, verbose=False))], verbose=False)
+cluster_pipeline = Pipeline([('scaler', StandardScaler()), ('kmeans', KMeans(n_clusters=kl.elbow, verbose=False))], verbose=False)
 X = data.select_dtypes(np.number)
 num_col = list(X.columns)
 cluster_pipeline.fit(X)
