@@ -115,7 +115,7 @@ for i in range(totalSongs):
 
 playlistSongsFile.close()
 
-n = 10
+n = 15
 
 ### WORKING ON
 songVectorData = []
@@ -128,6 +128,7 @@ songDataArray = np.array(list(songVectorData))
 meanVector = np.mean(songDataArray, axis=0)
 print(meanVector)
 
+## CREATE LOOP OF RANDOM 3
 print("1")
 scaler = cluster_pipeline.steps[0][1]
 print("1")
