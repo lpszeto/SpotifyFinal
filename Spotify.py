@@ -112,9 +112,8 @@ for i in range(totalSongs):
         
         playlistSongsFile.write(f'{valence},{releaseDate},{acousticness},{artists},{danceability},{durationMS},{energy},' \
                                 f'{explicit},{id},{instrumentalness},{key},{liveness},{loudness},{mode},"{trackName}",{popularity},{releaseDate},{speechiness},{tempo}\n')
-
+    print(f"Retrieved data for song {i+1}/{totalSongs}")
 playlistSongsFile.close()
-
 
 ### WORKING ON
 # songVectorData = []
@@ -158,4 +157,24 @@ projection['cluster'] = data['cluster_label']
 
 fig = px.scatter(projection, x='x', y='y', color='cluster', hover_data=['x', 'y', 'title', 'artists'])
 fig.show()
+## Creates a Vector of the playlists songs the user has chosen and then turns it to an array
+songVectorData = []
+newData = pd.read_csv("playlistSongs.csv", on_bad_lines="skip", encoding='cp1252')
+for i in range(newData.shape[0]):
+    songData = newData.loc[i,:]
+    songVector = songData[colOrder].values
+    songVectorData.append(songVector)
+songDataArray = np.array(list(songVectorData))
+meanVector = np.mean(songDataArray, axis=0) ## Takes the mean and turns it into one array
+print(meanVector)
+
+## CREATE LOOP OF RANDOM 3
+scaler = cluster_pipeline.steps[0][1]
+scaled_data = scaler.transform(data[colOrder])
+scaled_song_center = scaler.transform(meanVector.reshape(1, -1))
+distances = cdist(scaled_song_center, scaled_data, 'cosine')
+index = list(np.argsort(distances)[:, :n][0])
+    
+rec_songs = data.iloc[index]
+print(rec_songs)
 
