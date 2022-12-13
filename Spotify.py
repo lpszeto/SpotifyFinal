@@ -17,12 +17,12 @@ from kneed import KneeLocator
 import warnings
 
 ## n is the amount of songs you want to recommend
-numToRec = input("How many songs would you like to recommend\n")
+numToRec = input("How many songs would you like to be recommended\n")
 numToRec = int(numToRec)
 n = 4
 
 data = pd.read_csv("data.csv")
-
+print("Creating K-Means Clustering . . .")
 ## CAN COMMENT OUT HERE TO NEXT COMMENT LINE ONLY USED IF LEARNING DATA SET CHANGED
 X = data.select_dtypes(np.number)
 sse = []
