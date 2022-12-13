@@ -138,7 +138,6 @@ for i in range(newData.shape[0]):
     songVector = songData[colOrder].values
     songVectorData.append(songVector)
 songDataArray = np.array(list(songVectorData))
-meanVector = np.mean(songDataArray, axis=0) ## Takes the mean and turns it into one array
 
 scaler = cluster_pipeline.steps[0][1]
 scaled_data = scaler.transform(data[colOrder])
