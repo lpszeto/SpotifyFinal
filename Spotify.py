@@ -112,7 +112,7 @@ for i in range(totalSongs):
         
         playlistSongsFile.write(f'{valence},{releaseDate},{acousticness},{artists},{danceability},{durationMS},{energy},' \
                                 f'{explicit},{id},{instrumentalness},{key},{liveness},{loudness},{mode},"{trackName}",{popularity},{releaseDate},{speechiness},{tempo}\n')
-
+    print(f"Got data for song {i+1}/{totalSongs}")
 playlistSongsFile.close()
 
 n = 15
@@ -129,17 +129,11 @@ meanVector = np.mean(songDataArray, axis=0)
 print(meanVector)
 
 ## CREATE LOOP OF RANDOM 3
-print("1")
 scaler = cluster_pipeline.steps[0][1]
-print("1")
 scaled_data = scaler.transform(data[colOrder])
-print("1")
 scaled_song_center = scaler.transform(meanVector.reshape(1, -1))
-print("1")
 distances = cdist(scaled_song_center, scaled_data, 'cosine')
-print("1")
 index = list(np.argsort(distances)[:, :n][0])
-print("1")
     
 rec_songs = data.iloc[index]
 print(rec_songs)
