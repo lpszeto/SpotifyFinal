@@ -1,0 +1,25 @@
+valence,year,acousticness,artists,danceability,duration_ms,energy,explicit,id,instrumentalness,key,liveness,loudness,mode,name,popularity,release_date,speechiness,tempo
+0.616,2020,0.476,['Sheff G'],0.85,153561,0.458,0,3VayB5gLZGODx8b7RO1y5f,0,8,0.26,-7.82,1,"No Suburban Pt. 2",70,2020,0.339,143.973
+0.305,2020,0.0301,['Pop Smoke'],0.772,135747,0.878,0,57BGVV6wcyhbn3hsjlqEZB,2.18e-06,2,0.251,-4.22,1,"Element",79,2020,0.324,61.311
+0.674,2021,0.391,"['Polo G', 'Pop Smoke', 'Fivio Foreign']",0.734,165405,0.712,0,4CPcZHzSvIBM8AKhdHUwnL,0,6,0.103,-6.217,0,"Clueless (with Pop Smoke & Fivio Foreign)",65,2021,0.201,140.369
+0.728,2021,0.336,"['Pop Smoke', 'Dua Lipa']",0.675,184800,0.608,0,3DMs7bahbQTnoxCjgP7qoK,0,3,0.11,-6.934,0,"Demeanor (feat. Dua Lipa)",64,2021,0.103,99.865
+0.284,2021,0.359,"['Pop Smoke', 'Chris Brown']",0.563,156000,0.672,0,58T4yPLn4NjBYXfRxeweyM,0,9,0.0972,-7.226,0,"Woo Baby (feat. Chris Brown)",71,2021,0.0765,99.772
+0.778,2021,0.275,"['Pop Smoke', 'Future']",0.795,214925,0.582,0,3Zg68ElzsOAHABZsfXlljo,0,0,0.239,-7.365,0,"Mr. Jones (feat. Future)",54,2021,0.054,134.055
+0.595,2021,0.107,"['Pop Smoke', 'Bizzy Banks']",0.578,228252,0.684,0,24YG5Z8Of1VHovrfXsbvCZ,0,0,0.49,-5.908,1,"30 (feat. Bizzy Banks)",61,2021,0.191,106.743
+0.411,2021,0.526,"['Pop Smoke', '21 Savage', '42 Dugg']",0.716,203586,0.67,0,4LaGu95Ui2s4vprSQYWUAZ,0,0,0.13,-6.995,0,"Bout A Million (feat. 42 Dugg & 21 Savage)",64,2021,0.101,145.043
+0.347,2020,0.114,"['Pop Smoke', 'Lil Baby', 'DaBaby']",0.823,190476,0.586,0,0PvFJmanyNQMseIFrU708S,0,6,0.193,-6.606,0,"For The Night (feat. Lil Baby & DaBaby)",81,2020,0.2,125.971
+0.158,2020,0.43,"['Kid Cudi', 'Skepta', 'Pop Smoke']",0.619,174960,0.589,0,5CFJRZRq6sdKKtRwNPWbYv,0.000392,1,0.378,-6.531,1,"Show Out (with Skepta & Pop Smoke)",71,2020,0.124,143.896
+0.303,2020,0.0352,"['Lil Tjay', 'Fivio Foreign', 'Pop Smoke']",0.565,214825,0.569,0,3Ddny34bFoYBb8dIGq5lwp,8.81e-06,6,0.106,-6.084,0,"Zoo York (feat. Fivio Foreign & Pop Smoke)",66,2020,0.379,92.466
+0.357,2021,0.0951,"['Lil Tjay', 'Fivio Foreign', 'Kay Flock']",0.545,150476,0.82,0,25GyyK9CyZRiDCsPY51fIT,0,8,0.29,-4.489,1,"Not In The Mood (feat. Fivio Foreign & Kay Flock)",68,2021,0.275,141.908
+0.901,2022,0.0353,"['Kay Flock', 'Cardi B', 'Dougie B', 'Bory300']",0.87,118249,0.835,0,0RkCnqwF8Tfl2QGPZwopyk,0,1,0.142,-5.875,1,"Shake It (feat. Cardi B Dougie B & Bory300)",71,2022,0.311,140.051
+0.632,2021,0.515,['Kay Flock'],0.894,124514,0.797,0,2QXWdzWLvRZToFFyY49Exz,0,4,0.0654,-9.452,0,"Is Ya Ready",63,2021,0.361,143.917
+0.407,2022,0.159,['Lil Tjay'],0.684,135264,0.545,0,1HvTxgCj0mTzQlEo0zLvFb,0,1,0.102,-6.885,1,"In My Head",78,2022,0.121,143.049
+0.501,2022,0.14,"['Fivio Foreign', 'Lil Tjay', 'Yung Bleu']",0.776,211064,0.69,0,6HDe7ITVyXYBZWJ2SaBU0x,0,8,0.0944,-6.542,0,"World Watching (feat. Lil Tjay & Yung Bleu)",55,2022,0.229,141.038
+0.478,2022,0.054,['Lil Tjay'],0.498,150000,0.625,0,2BJWxD8xKrDv8vneTvTIm9,0,8,0.175,-7.452,0,"Beat the Odds",77,2022,0.342,84.821
+0.392,2021,0.0758,"['Lil Tjay', 'Polo G', 'Fivio Foreign']",0.809,144349,0.638,0,6cQ08IpBxxfGcSKxqE3NmB,0,1,0.15,-7.268,0,"Headshot (feat. Polo G & Fivio Foreign)",0,2021,0.257,117.982
+0.497,2022,0.102,"['Fivio Foreign', 'Kanye West', 'Alicia Keys']",0.474,256000,0.801,0,4huBDGP4I3S0pYI0EaRN1c,0,8,0.322,-5.978,0,"City of Gods",68,2022,0.375,147.356
+0.406,2022,0.0185,"['Fivio Foreign', 'The Kid LAROI']",0.642,130897,0.787,0,5QvW5lK6mkfTegpAK9JOO7,0,5,0.288,-6.389,0,"Paris to Tokyo",69,2022,0.17,146.733
+0.293,2021,0.1,"['Spinabenz', 'Yungeen Ace', 'FastMoney Goon', 'Whoppa Wit Da Choppa']",0.815,134187,0.737,0,2fujhLR4zhDRPbYDhI0xRr,0,11,0.123,-6.968,1,"Who I Smoke",60,2021,0.188,99.95
+0.646,2021,0.456,['Ciggy Blacc'],0.782,109767,0.845,0,66psczHHIdXT4VY9SdV9Fj,0,1,0.135,-5.64,1,"Butterfly",43,2021,0.249,140.054
+0.972,2022,0.38,['Central Cee'],0.911,97393,0.573,0,3LtpKP5abr2qqjunvjlX5i,0,6,0.403,-7.43,1,"Doja",89,2022,0.288,140.04
+0.757,2021,0.228,['Central Cee'],0.905,188690,0.571,0,1o6x7iRcDQPEEg8YPgLeVA,0,2,0.113,-7.979,1,"Day in the Life",75,2021,0.357,144.892

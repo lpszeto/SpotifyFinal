@@ -2,40 +2,42 @@ import csv
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as py
-import plotly.express as px 
-import librosa 
+import plotly.express as px
+import librosa
 import music21
 import spotipy
 from spotipy.oauth2 import SpotifyClientCredentials
-import os
-from music21 import converter, corpus, instrument, midi, note, chord, pitch, features
 from sklearn.cluster import KMeans
 from sklearn.preprocessing import StandardScaler
 from sklearn.pipeline import Pipeline
 from sklearn.decomposition import PCA
+from sklearn.metrics import euclidean_distances
+from scipy.spatial.distance import cdist
 from kneed import KneeLocator
 
-# data = pd.read_csv("data.csv")
+## n is the amount of songs you want to recommend
+n = 25
+data = pd.read_csv("data.csv")
 
-# #K-Means 
-# cluster_pipline = Pipeline([('scaler', StandardScaler()), ('kmeans', KMeans(n_clusters=20, verbose=False))], verbose=False)
-# X = data.select_dtypes(np.number)
-# num_col = list(X.columns)
-# cluster_pipline.fit(X)
-# cluster_labels = cluster_pipline.predict(X)
-# data['cluster_label'] = cluster_labels
+#K-Means 
+cluster_pipeline = Pipeline([('scaler', StandardScaler()), ('kmeans', KMeans(n_clusters=20, verbose=False))], verbose=False)
+X = data.select_dtypes(np.number)
+num_col = list(X.columns)
+cluster_pipeline.fit(X)
+cluster_labels = cluster_pipeline.predict(X)
+data['cluster_label'] = cluster_labels
 
-# #Visualizing Cluster PCA 
-# pca_pipeline = Pipeline([('scaler', StandardScaler()), ('PCA', PCA(n_components=2))])
-# song_embedding = pca_pipeline.fit_transform(X)
-# projection = pd.DataFrame(columns=['x', 'y'], data=song_embedding)
-# projection['title'] = data['name']
-# projection['artists'] = data['artists']
-# projection['cluster'] = data['cluster_label']
+#Visualizing Cluster PCA 
+pca_pipeline = Pipeline([('scaler', StandardScaler()), ('PCA', PCA(n_components=2))])
+song_embedding = pca_pipeline.fit_transform(X)
+projection = pd.DataFrame(columns=['x', 'y'], data=song_embedding)
+projection['title'] = data['name']
+projection['artists'] = data['artists']
+projection['cluster'] = data['cluster_label']
 
 
-# fig = px.scatter(projection, x='x', y='y', color='cluster', hover_data=['x', 'y', 'title', 'artists'])
-# fig.show()
+fig = px.scatter(projection, x='x', y='y', color='cluster', hover_data=['x', 'y', 'title', 'artists'])
+fig.show()
 
 colOrder = ['valence', 'year', 'acousticness', 'danceability', 'duration_ms', 'energy', 'explicit',
  'instrumentalness', 'key', 'liveness', 'loudness', 'mode', 'popularity', 'speechiness', 'tempo']
@@ -115,48 +117,38 @@ for i in range(totalSongs):
     print(f"Retrieved data for song {i+1}/{totalSongs}")
 playlistSongsFile.close()
 
-### WORKING ON
-# songVectorData = []
-# data = pd.read_csv("playlistSongs.csv")
-# for i in range(data.shape[0]):
-#     songData = data.loc[i,:]
-#     songVector = songData[colOrder].values
-#     songVectorData.append(songVector)
-# songDataArray = np.array(list(songVectorData))
-# meanVector = np.mean(songDataArray, axis=0)
-# print(meanVector)
-# scaler = song_cluster_pipeline.steps[0][1]
-## WORKING ON
-data = pd.read_csv("playlistSongs.csv", on_bad_lines='skip')
-X = data.select_dtypes(np.number)
-print(X)
-sse = []
-for k in range(1,20):
-    kmeans = KMeans(n_clusters=k).fit(X)
-    X["clusters"] = kmeans.labels_
-    print(X["clusters"])   
-    sse.append(kmeans.inertia_)
-kl = KneeLocator(range(1,20),sse, curve="convex", direction="decreasing")
 
-#K-Means 
-cluster_pipline = Pipeline([('scaler', StandardScaler()), ('kmeans', KMeans(n_clusters=kl.elbow, verbose=False))], verbose=False)
-X = data.select_dtypes(np.number)
-num_col = list(X.columns)
-cluster_pipline.fit(X)
-cluster_labels = cluster_pipline.predict(X)
-data['cluster_label'] = cluster_labels
+# data = pd.read_csv("playlistSongs.csv", on_bad_lines='skip')
+# X = data.select_dtypes(np.number)
+# print(X)
+# sse = []
+# for k in range(1,20):
+#     kmeans = KMeans(n_clusters=k).fit(X)
+#     X["clusters"] = kmeans.labels_
+#     print(X["clusters"])   
+#     sse.append(kmeans.inertia_)
+# kl = KneeLocator(range(1,20),sse, curve="convex", direction="decreasing")
 
-#Visualizing Cluster PCA 
-pca_pipeline = Pipeline([('scaler', StandardScaler()), ('PCA', PCA(n_components=2))])
-song_embedding = pca_pipeline.fit_transform(X)
-projection = pd.DataFrame(columns=['x', 'y'], data=song_embedding)
-projection['title'] = data['name']
-projection['artists'] = data['artists']
-projection['cluster'] = data['cluster_label']
+# #K-Means 
+# cluster_pipline = Pipeline([('scaler', StandardScaler()), ('kmeans', KMeans(n_clusters=kl.elbow, verbose=False))], verbose=False)
+# X = data.select_dtypes(np.number)
+# num_col = list(X.columns)
+# cluster_pipline.fit(X)
+# cluster_labels = cluster_pipline.predict(X)
+# data['cluster_label'] = cluster_labels
+
+# #Visualizing Cluster PCA 
+# pca_pipeline = Pipeline([('scaler', StandardScaler()), ('PCA', PCA(n_components=2))])
+# song_embedding = pca_pipeline.fit_transform(X)
+# projection = pd.DataFrame(columns=['x', 'y'], data=song_embedding)
+# projection['title'] = data['name']
+# projection['artists'] = data['artists']
+# projection['cluster'] = data['cluster_label']
 
 
-fig = px.scatter(projection, x='x', y='y', color='cluster', hover_data=['x', 'y', 'title', 'artists'])
-fig.show()
+# fig = px.scatter(projection, x='x', y='y', color='cluster', hover_data=['x', 'y', 'title', 'artists'])
+# fig.show()
+
 ## Creates a Vector of the playlists songs the user has chosen and then turns it to an array
 songVectorData = []
 newData = pd.read_csv("playlistSongs.csv", on_bad_lines="skip", encoding='cp1252')
