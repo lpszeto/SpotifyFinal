@@ -196,7 +196,7 @@ finalDF = df.drop(range(0,newData.shape[0]))
 
 colToPrint = ["artists", "name"]
 finalDF = finalDF.sample(n = numToRec)  ## Randomly picks 
-finalDF.to_csv("finalRecommendedSongs.csv", columns = colToPrint)
-
-
-
+songFile = open("finalRecommendedSongs.txt", "w")
+for i in range(numToRec):
+    songFile.write(f"'{finalDF['name'].iloc[i]}' by {finalDF['artists'].iloc[i]} Link: https://open.spotify.com/track/{data['id'].iloc[i]}\n")
+songFile.close()
