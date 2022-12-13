@@ -14,8 +14,11 @@ from sklearn.decomposition import PCA
 from sklearn.metrics import euclidean_distances
 from scipy.spatial.distance import cdist
 from kneed import KneeLocator
+import warnings
 
 ## n is the amount of songs you want to recommend
+numToRec = input("How many songs would you like to recommend\n")
+numToRec = int(numToRec)
 n = 2
 data = pd.read_csv("data.csv")
 X = data.select_dtypes(np.number)
@@ -92,6 +95,7 @@ colOrder = ['valence', 'year', 'acousticness', 'danceability', 'duration_ms', 'e
 # artist_id = []
 
 # playlistSongsFile = open('playlistSongs.csv', 'w')
+warnings.filterwarnings("ignore")
 # playlistSongsFile.write('valence,year,acousticness,artists,danceability,duration_ms,energy,explicit,id,instrumentalness,key,' \
 #                                                     'liveness,loudness,mode,name,popularity,release_date,speechiness,tempo\n')
 
@@ -173,7 +177,7 @@ indexList = []
 for i in range(newData.shape[0]):
     scaled_song_center = scaler.transform(songVectorData[i].reshape(1, -1))
     distances = cdist(scaled_song_center, scaled_data, 'cosine')
-    index = list(np.argsort(distances)[:, :5][0])
+    index = list(np.argsort(distances)[:, :n][0])
     indexList.append(index)
     
 # rec_songs = []
@@ -181,8 +185,15 @@ df = newData.append(data.iloc[indexList[0]], ignore_index = True)
 for i in range(1, newData.shape[0]):
     df = df.append(data.iloc[indexList[i]], ignore_index = True)
     
+
+## REMOVES DUPLICATES
+for i in range(newData.shape[0]):
+    finalDF = df[(df['artists'] != newData['artists'].iloc[i]) & df['name'] != newData['name'].iloc[i]] 
+finalDF = df.drop(range(0,newData.shape[0]))
+
 colToPrint = ["artists", "name"]
-df.to_csv("newAlg.csv", columns = colToPrint)
-print(df)
-# print(rec_songs)
+finalDF = finalDF.sample(n = numToRec)
+finalDF.to_csv("finalRecommendedSongs.csv", columns = colToPrint)
+
+
 
