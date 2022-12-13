@@ -168,6 +168,7 @@ for i in range(numToRec):
     songFile.write(f"'{finalDF['name'].iloc[i]}' by {finalDF['artists'].iloc[i]} Link: https://open.spotify.com/track/{finalDF['id'].iloc[i]}\n")
 songFile.close()
 
+print("DONE")
 
 
 # data = pd.read_csv("playlistSongs.csv", on_bad_lines='skip')
